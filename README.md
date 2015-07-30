@@ -41,7 +41,7 @@ After completing this assignment, you be able to effectively use
 ## Normal Mode
 Normal mode is a simple, naive, implementation of Redit
 
-![reddit](assets/reddit.png)
+![reddit](assets/reddit.PNG)
             
 ## Hard Mode
 
