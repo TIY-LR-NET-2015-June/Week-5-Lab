@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="C:\Users\Jason W\Documents\Visual Studio 2015\Projects\week5day3\Week-5-Day-3\lab5-Jason\lab5-Jason\obj\Release\Package\PackageTmp" />
+  <setAcl path="C:\Users\Jason W\Documents\Visual Studio 2015\Projects\week5day3\Week-5-Day-3\lab5-Jason\lab5-Jason\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="C:\Users\Jason W\Documents\Visual Studio 2015\Projects\week5day3\Week-5-Day-3\lab5-Jason\lab5-Jason\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+</sitemanifest>
