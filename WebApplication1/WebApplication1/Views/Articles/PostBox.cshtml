@@ -1,0 +1,13 @@
+﻿@model WebApplication1.Models.Article
+
+<div>
+    <div>
+        <button type="button" class="btn btn-default navbar-btn"><span>glyphicon glyphicon-thumbs-up</span>@Html.DisplayFor(model => model.UpVotes)</button>
+        @Html.DisplayFor(model => model.UpVotes)
+    </div>
+    <div style="background: url('@Html.DisplayFor(model => model.PictureUrl)'); background-size: cover; background-position: center;)">
+    </div>
+    <p><strong>@Html.DisplayFor(model => model.Headline)</strong></p>
+    <p>by @Html.DisplayFor(model => model.User.FirstName)</p>
+</div>
+

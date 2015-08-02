@@ -5,60 +5,35 @@
     Layout = "~/Views/Shared/_MikeItLayout.cshtml";
 }
 
-<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Submitted)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Headline)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Url)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PictureUrl)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpVotes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DownVotes)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Submitted)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Headline)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Url)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PictureUrl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UpVotes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DownVotes)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+@foreach (var item in Model)
+{
+   
+
+
+    <div class="col-lg-1 col-md-2 col-sm-4">
+        @Html.ActionLink(item.UpVotes.ToString(), "RecordUpVote" , new { id = item.Id })"<span class="glyphicon glyphicon-thumbs-up"></span> 
+    
+    </div>
+    <a href="@Html.DisplayFor(modelItem => item.Url)">
+        <div class="col-lg-1 col-md-2 col-sm-8" style="background-image: url('@Html.DisplayFor(modelItem => item.PictureUrl)'); background-size: cover; background-position: center; height: 6em;">
+        </div>
+    </a>
+    <div class="col-lg-10 col-md-8 col-sm-12">
+        <a href=" @Html.DisplayFor(modelItem => item.Url)"><p><strong>@Html.DisplayFor(modelItem => item.Headline)</strong></p></a>
+        <p>by @Html.DisplayFor(modelItem => item.User.FirstName)</p>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Back to List", "Index") | 
+            @Html.ActionLink("Details", "Details", new { id = item.Id })
+        </p>
+    </div>
+    
+   
+
 }
 
-</table>

@@ -182,6 +182,18 @@
     <Compile Include="Migrations\201507311833251_added seed method for articles.Designer.cs">
       <DependentUpon>201507311833251_added seed method for articles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507311952562_seed function fixed by Daniel.cs" />
+    <Compile Include="Migrations\201507311952562_seed function fixed by Daniel.Designer.cs">
+      <DependentUpon>201507311952562_seed function fixed by Daniel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508012115461_functionality for upvote.cs" />
+    <Compile Include="Migrations\201508012115461_functionality for upvote.Designer.cs">
+      <DependentUpon>201508012115461_functionality for upvote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508012148110_changed votes to nullable.cs" />
+    <Compile Include="Migrations\201508012148110_changed votes to nullable.Designer.cs">
+      <DependentUpon>201508012148110_changed votes to nullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -255,6 +267,7 @@
     <Content Include="Views\Articles\About.cshtml" />
     <Content Include="Views\Account\Contact.cshtml" />
     <Content Include="Views\Articles\Contact.cshtml" />
+    <Content Include="Views\Articles\PostBox.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -273,6 +286,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507311833251_added seed method for articles.resx">
       <DependentUpon>201507311833251_added seed method for articles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507311952562_seed function fixed by Daniel.resx">
+      <DependentUpon>201507311952562_seed function fixed by Daniel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508012115461_functionality for upvote.resx">
+      <DependentUpon>201508012115461_functionality for upvote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508012148110_changed votes to nullable.resx">
+      <DependentUpon>201508012148110_changed votes to nullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -20,28 +20,10 @@ namespace WebApplication1.Controllers
         {
             List<Article> displayList = new List<Article>();
             displayList = db.Articles.ToList<Article>();
-            if (displayList == null)
-                {
-                SeedArticles(db);
-
-            }
-            return View(db.Articles.ToList());
+            
+            return View(displayList.OrderByDescending(x => x.UpVotes));
         }
-
-        protected void SeedArticles(WebApplication1.Models.ApplicationDbContext context)
-        {
-            context.Articles.AddOrUpdate(x => x.Id,
-        new Article() { Id = 1, Headline = "A linguist peeks into your math brain", Url = "https://mknull.wordpress.com/2015/06/10/a-linguist-peeks-into-your-math-brain/" },
-        new Article() { Id = 1, Headline = "Consumers should push back against sleazy business practices", Url = "https://mknull.wordpress.com/2015/02/26/consumers-should-push-back-against-sleazy-business-practices/" },
-        new Article() { Id = 1, Headline = "On Being a Cat Person", Url = "https://mknull.wordpress.com/2014/12/28/on-being-a-cat-person/" },
-        new Article() { Id = 1, Headline = "Candy Bars Used To Be A Nickel, But Not Today's Nickel", Url = "https://mknull.wordpress.com/2014/12/23/candy-bars-used-to-be-a-nickel-but-not-todays-nickel/" }
-        );
-        }
-
-
-
-
-
+        
         // GET: Articles/Details/5
         public ActionResult Details(int? id)
         {
@@ -70,9 +52,13 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Submitted,Headline,Url,PictureUrl,UpVotes,DownVotes")] Article article)
         {
+           
             if (ModelState.IsValid)
             {
-                db.Articles.Add(article);
+                article.Submitted = DateTime.Now;
+                article.UpVotes = 0;
+                article.DownVotes = 0; 
+                db.Articles.AddOrUpdate(article);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -157,6 +143,20 @@ namespace WebApplication1.Controllers
 
             return View();
         }
-
+       
+        
+        public ActionResult RecordUpVote(int? id)
+        {
+            Article article = db.Articles.FirstOrDefault(x => x.Id == id);
+            if (article.UpVotes == null)
+            {
+                article.UpVotes = 0;
+            }
+            article.UpVotes++;
+            db.Entry(article).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+            }
+        }
     }
-}
+
