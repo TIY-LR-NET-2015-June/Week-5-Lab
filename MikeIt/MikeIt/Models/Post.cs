@@ -9,8 +9,8 @@ namespace MikeIt.Models
 {
     public class Post
     {
-       
-        public int Id { get; set; }
+        [Key]
+        public int? PostId { get; set; }
 
         [Required]
         public string Headline { get; set; }
