@@ -36,4 +36,8 @@ namespace MikeIt.Models
         }
         public System.Data.Entity.DbSet<MikeIt.Models.Post> Posts { get; set; }
     }
+    public class PostContext : DbContext
+    {
+        public virtual DbSet<Post> Posts { get; set; }
+    }
 }

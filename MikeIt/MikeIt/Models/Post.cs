@@ -25,9 +25,8 @@ namespace MikeIt.Models
 
         public ApplicationUser User { get; set; }
 
+        public int UpVotes { get; set; }
+
     }
-    public class PostContext : DbContext
-    {
-        public virtual DbSet<Post> Posts { get; set; }
-    }
+   
 }
