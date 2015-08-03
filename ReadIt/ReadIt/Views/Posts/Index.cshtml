@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ReadIt.Models.Post>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="col-xs-3">
+
+                <div style="color:green;font-size:2em">
+                    <a href="@Url.Action("UpVote", "Posts", item)">↑</a>
+                    @Html.DisplayFor(modelItem => item.UpCount)
+                </div>
+
+                @if (item.ImageResource != null)
+                {
+                    @Html.ExternalLink(item.LinkTarget, item.Title, item.ImageResource)
+                }
+
+                <div style="color:red;font-size:2em">
+                    <a href="@Url.Action("DownVote", "Posts", item)">↓</a>
+                    @Html.DisplayFor(modelItem => item.DownCount)
+                </div>
+            </div>
+
+            <div class="col-md-9">
+
+                <h3 class="text-primary">@Html.ExternalLink(item.LinkTarget, item.Title)</h3>
+
+                <h5 class="text-info"> @item.User.UserName</h5>
+
+                @{var TimeSincePosted = DateTime.Now - item.CreatedOn;}
+                <div class="text-muted">
+                    Posted @TimeSincePosted.Hours.ToString() hours ago.
+                </div>
+
+            </div>
+
+
+        </div>
+        <hr />
+                    }
+</div>
+
+
