@@ -181,6 +181,10 @@
     <Compile Include="Migrations\201508030334126_ShortDescription.Designer.cs">
       <DependentUpon>201508030334126_ShortDescription.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508030346472_IndividualVoteIncrimients.cs" />
+    <Compile Include="Migrations\201508030346472_IndividualVoteIncrimients.Designer.cs">
+      <DependentUpon>201508030346472_IndividualVoteIncrimients.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -275,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508030334126_ShortDescription.resx">
       <DependentUpon>201508030334126_ShortDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508030346472_IndividualVoteIncrimients.resx">
+      <DependentUpon>201508030346472_IndividualVoteIncrimients.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
