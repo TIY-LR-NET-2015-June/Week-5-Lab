@@ -44,7 +44,7 @@ namespace Reddit.Controllers
 
         public ActionResult Index()
         {
-            return View(posts.RedditDB.OrderByDescending(p => p.ConsolidatedVotes).ToList());
+            return View(posts.RedditDB.ToList().OrderByDescending(p => p.ConsolidatedVotes));
         }
 
         public ActionResult Details(int ID)

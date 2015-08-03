@@ -25,7 +25,7 @@ namespace Reddit.Models
         {
             get
             {
-                return Body.Substring(0, 50) + "...";
+                return Body.Substring(0, 200) + "...";
             }
         }
 
