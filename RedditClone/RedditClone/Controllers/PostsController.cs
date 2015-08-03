@@ -142,6 +142,7 @@ namespace RedditClone.Controllers
             return Content(post.Popularity.ToString());
         }
 
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
