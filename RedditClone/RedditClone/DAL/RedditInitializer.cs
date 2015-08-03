@@ -28,13 +28,13 @@ namespace RedditClone.DAL
             context.SaveChanges();
             var posts = new List<Post>
             {
-            new Post{PostId=1050,Title="Chemistry",UserId=1,Text="Blah de blah", PostTime=DateTime.Today.AddDays(-4)},
-            new Post{PostId=4022,Title="Microeconomics",UserId=3,Text="Blah de blah", PostTime=DateTime.Today.AddDays(-5)},
-            new Post{PostId=4041,Title="Macroeconomics",UserId=3,Text="Blah de blah", PostTime=DateTime.Today.AddDays(-3)},
-            new Post{PostId=1045,Title="Calculus",UserId=4,Text="Blah de blah", PostTime=DateTime.Today.AddDays(-7)},
-            new Post{PostId=3141,Title="Trigonometry",UserId=6,Text="Blah de blah", PostTime=DateTime.Today.AddDays(-4)},
-            new Post{PostId=2021,Title="Composition",UserId=7,Text="Blah de blah", PostTime=DateTime.Today.AddDays(-2)},
-            new Post{PostId=2042,Title="Literature",UserId=7,Text="Blah de blah", PostTime=DateTime.Today}
+            new Post{PostId=1050,Title="This year, I went to comic con as Drunk Uncle Ben. The goal: pass out and die in front of as many spidermen as possible.",UserId=1,Text="Blah de blah", PostTime=DateTime.Today.AddDays(-4)},
+            new Post{PostId=4022,Title="What happens when a joey needs a pouch but does not have a mother",UserId=3,Text="Blah de blah", PostTime=DateTime.Today.AddDays(-5)},
+            new Post{PostId=4041,Title="Dude surfs a wave on a dirt bike",UserId=3,Text="Blah de blah", PostTime=DateTime.Today.AddDays(-3)},
+            new Post{PostId=1045,Title="LPT: Check and replace AC unit filters regularly. Units as clogged as this waste electricity, don't cool as well, and can make you sneeze or sick!",UserId=4,Text="Blah de blah", PostTime=DateTime.Today.AddDays(-7)},
+            new Post{PostId=3141,Title="They packaged these water capsules wrong",UserId=6,Text="Blah de blah", PostTime=DateTime.Today.AddDays(-4)},
+            new Post{PostId=2021,Title="TIL in 2005, Wells Fargo started a program to educate black communities on building 'generational wealth.' This program turned out to be a front for steering black people into predatory loans. WF paid damages, but not before 100s of houses were foreclosed.",UserId=7,Text="Blah de blah", PostTime=DateTime.Today.AddDays(-2)},
+            new Post{PostId=2042,Title="You gotta do what you gotta do.",UserId=7,Text="Blah de blah", PostTime=DateTime.Today}
             };
             posts.ForEach(s => context.Posts.Add(s));
             context.SaveChanges();

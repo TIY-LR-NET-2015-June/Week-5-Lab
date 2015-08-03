@@ -9,43 +9,18 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.User.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Text)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PostTime)
-        </th>
-        <th></th>
-    </tr>
+
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Text)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostTime)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PostId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PostId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PostId })
-        </td>
-    </tr>
+
+            <h4>@Html.ActionLink(item.Title, "Details", new { id = item.PostId })</h4>
+
+            <p>promoted by @Html.ActionLink(item.User.UserName, "../Users/Details", new { id = item.UserId })</p>
+
+            <p>@Html.DisplayFor(modelItem => item.PostTime)</p>
+       
+         
+            
+          
 }
 
-</table>
