@@ -1,0 +1,18 @@
+﻿@model Reddit.Models.Post
+
+<div class="container post">
+    @Html.ActionLink(Model.Title, "Details", new { id = Model.ID })
+    <br />
+    @((ViewData["index"].ToString() == "no") ? Html.DisplayFor(model => model.Body) : Html.DisplayFor(model => model.ShortDescription))
+    <br />
+    <br />
+    <p>Votes: </p> @Html.DisplayFor(model => model.ConsolidatedVotes)
+    <p>Published on:</p> @Html.DisplayFor(model => model.PublishedOn)
+    <p>By:</p> @Html.DisplayFor(model => model.Publisher)
+
+    @Html.ActionLink("Vote Up", "VoteUp", new { id = Model.ID }, new { @class = "voteUp" })
+    @Html.ActionLink("Vote Down", "VoteDown", new { id = Model.ID }, new { @class = "voteDown" })
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Details", "Details", new { id = Model.ID }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.ID })
+</div>
