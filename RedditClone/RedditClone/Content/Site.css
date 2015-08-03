@@ -1,4 +1,13 @@
-﻿body {
+﻿.upvote, .downvote{
+    cursor: pointer;
+}
+.voteclick  {
+    color: orange;
+}
+
+
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }

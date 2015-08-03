@@ -135,6 +135,10 @@
     <Compile Include="Migrations\201508030217110_Initial.Designer.cs">
       <DependentUpon>201508030217110_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508031934068_UpAndDownVote.cs" />
+    <Compile Include="Migrations\201508031934068_UpAndDownVote.Designer.cs">
+      <DependentUpon>201508031934068_UpAndDownVote.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\User.cs" />
@@ -202,6 +206,9 @@
     <EmbeddedResource Include="Migrations\201508030217110_Initial.resx">
       <DependentUpon>201508030217110_Initial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508031934068_UpAndDownVote.resx">
+      <DependentUpon>201508031934068_UpAndDownVote.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -217,7 +224,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52008</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

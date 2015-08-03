@@ -121,6 +121,27 @@ namespace RedditClone.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult UpVote(int postId)
+        {
+            //Grab the post from db
+            Post post = db.Posts.Find(postId);
+            post.UpVotes++;
+            db.SaveChanges();
+            return Content(post.Popularity.ToString());
+            //Increment post
+            //Save changes
+            //Return content result
+        }
+
+        public ActionResult DownVote(int postId)
+        {
+            //Grab the post from db
+            Post post = db.Posts.Find(postId);
+            post.DownVotes++;
+            db.SaveChanges();
+            return Content(post.Popularity.ToString());
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

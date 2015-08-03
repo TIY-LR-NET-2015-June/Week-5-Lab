@@ -10,17 +10,57 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
+<div class="container-fluid">
+    @foreach (var item in Model)
+    {
+        <div class="row-fluid">
+            <div align="center" class="col-xs-1 col-lg-offset-2">
+                <div class="upvote" data-id="@item.PostId"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></div>
+                <div class="popularity">@item.Popularity</div>
+                <div class="downvote" data-id="@item.PostId"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></div>
+            </div>
+            <div class="col-xs-11 col-lg-9">
+                <h4>@Html.ActionLink(item.Title, "Details", new { id = item.PostId })</h4>
 
-@foreach (var item in Model) {
+                <p>promoted by @Html.ActionLink(item.User.UserName, "../Users/Details", new { id = item.UserId })</p>
 
-            <h4>@Html.ActionLink(item.Title, "Details", new { id = item.PostId })</h4>
+                <p>@Html.DisplayFor(modelItem => item.PostTime)</p>
+            </div>
+        </div>
+    }
+</div>
 
-            <p>promoted by @Html.ActionLink(item.User.UserName, "../Users/Details", new { id = item.UserId })</p>
+@section scripts{
+    <script>
+        $("div.upvote").click(function () {
+            var that = $(this);
+            $.ajax({
+                method: "POST",
+                url: "@Url.Action("upvote", "Posts")",
+                data: { postId: that.data("id") }
+            })
+        .done(function (msg) {
+            that.unbind("click");
+            that.next().html(msg);
+            that.addClass('voteclick', 2000);
+        });
+        });
 
-            <p>@Html.DisplayFor(modelItem => item.PostTime)</p>
-       
-         
-            
-          
+
+        $("div.downvote").click(function () {
+            var that = $(this);
+            $.ajax({
+                method: "POST",
+                url: "@Url.Action("downvote", "Posts")",
+                data: { postId: that.data("id") }
+            })
+        .done(function (msg) {
+            that.unbind("click");
+            that.prev().html(msg);
+            that.addClass('voteclick', 2000);
+        });
+        });
+
+    </script>
 }
 
