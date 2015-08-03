@@ -25,7 +25,10 @@ namespace Reddit.Models
         {
             get
             {
-                return Body.Substring(0, 200) + "...";
+                if (Body.Length > 201)
+                    return Body.Substring(0, 200) + "...";
+                else
+                    return Body;
             }
         }
 

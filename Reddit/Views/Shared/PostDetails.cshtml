@@ -6,9 +6,9 @@
     @((ViewData["index"].ToString() == "no") ? Html.DisplayFor(model => model.Body) : Html.DisplayFor(model => model.ShortDescription))
     <br />
     <br />
-    <p>Votes: </p> @Html.DisplayFor(model => model.PositiveVote)
-    <p>Published on:</p> @Html.DisplayFor(model => model.PublishedOn)
-    <p>By:</p> @Html.DisplayFor(model => model.Publisher)
+    <p>Votes:  @Html.DisplayFor(model => model.PositiveVote)</p>
+    <p>Published on: @Html.DisplayFor(model => model.PublishedOn)</p>
+    <p>By: @Html.DisplayFor(model => model.Publisher)</p>
 
     @Html.ActionLink("Vote Up", "VoteUp", new { id = Model.ID }, new { @class = "voteUp" })
     @Html.ActionLink("Vote Down", "VoteDown", new { id = Model.ID }, new { @class = "voteDown" })
