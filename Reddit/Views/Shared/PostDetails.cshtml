@@ -6,7 +6,7 @@
     @((ViewData["index"].ToString() == "no") ? Html.DisplayFor(model => model.Body) : Html.DisplayFor(model => model.ShortDescription))
     <br />
     <br />
-    <p>Votes: </p> @Html.DisplayFor(model => model.ConsolidatedVotes)
+    <p>Votes: </p> @Html.DisplayFor(model => model.PositiveVote)
     <p>Published on:</p> @Html.DisplayFor(model => model.PublishedOn)
     <p>By:</p> @Html.DisplayFor(model => model.Publisher)
 

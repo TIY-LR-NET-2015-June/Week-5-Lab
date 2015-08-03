@@ -12,7 +12,15 @@ namespace Reddit.Models
         RedditUser user = new RedditUser();
         public int ID { get; set; }
         public string Publisher { get; set; }
-        public int ConsolidatedVotes { get; set; }
+        public int ConsolidatedVotes
+        {
+            get
+            {
+                return PositiveVote + NegativeVote;
+            }
+        }
+        public int PositiveVote { get; set; }
+        public int NegativeVote { get; set; }
         public string ShortDescription
         {
             get
@@ -33,7 +41,6 @@ namespace Reddit.Models
         {
             PublishedOn = DateTime.Now;
             Publisher = user.UserName;
-            ConsolidatedVotes = 0;
         }
     }
 }

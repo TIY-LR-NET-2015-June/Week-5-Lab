@@ -22,8 +22,6 @@ namespace Reddit.Controllers
         [HttpPost]
         public ActionResult Create(Post post)
         {
-            //if (post.ID == null)
-            //    post.ID = posts.RedditDB.Last().ID + 1;
             posts.RedditDB.Attach(post);
             posts.RedditDB.Add(post);
             posts.SaveChanges();
@@ -71,14 +69,14 @@ namespace Reddit.Controllers
         public ActionResult VoteUp(int ID)
         {
             Post post = posts.RedditDB.Find(ID);
-            post.ConsolidatedVotes += 1;
+            post.PositiveVote += 1;
             posts.SaveChanges();
             return RedirectToAction("Index");
         }
         public ActionResult VoteDown(int ID)
         {
             Post post = posts.RedditDB.Find(ID);
-            post.ConsolidatedVotes += -1;
+            post.NegativeVote -= 1;
             posts.SaveChanges();
             return RedirectToAction("Index");
         }
