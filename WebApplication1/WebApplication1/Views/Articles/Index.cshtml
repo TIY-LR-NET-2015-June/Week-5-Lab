@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WebApplication1.Models.Article>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MikeItLayout.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@foreach (var item in Model)
+{ 
+
+
+
+   <div class="col-lg-1 col-sm-4"> 
+           <div class="upVote glyphicon glyphicon-arrow-up" data-id="@item.Id">
+           </div>
+
+        <div style="clear:both;">@Html.DisplayFor(modelItem => item.Popularity)</div>
+            <div class="downVote glyphicon glyphicon-arrow-down" data-id="@item.Id">
+            </div>
+    </div>
+    <a href="@Html.DisplayFor(modelItem => item.Url)">
+        <div class="col-lg-1 col-sm-8" style="background-image: url('@Html.DisplayFor(modelItem => item.PictureUrl)'); background-size: cover; background-position: center; height: 6em;">
+        </div>
+    </a>
+    <div class="col-lg-10 col-sm-12">
+        <a href=" @Html.DisplayFor(modelItem => item.Url)"><h3><strong>@Html.DisplayFor(modelItem => item.Headline)</strong></h3></a>
+        <p>by @Html.DisplayFor(modelItem => item.User.FirstName)</p>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Back to List", "Index") | 
+            @Html.ActionLink("Details", "Details", new { id = item.Id })
+        </p>
+    </div>
+}
+
+@section scripts{
+    <script>
+        $(".upVote").click(function() {
+            $.ajax({
+                type: "POST",
+                url: "/Articles/RecordUpVote/"+$(this).data("id") ,
+                success: function(msg){
+                    window.alert( "Data Saved: " + msg );
+                }
+            });
+        });
+
+        $(".downVote").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "/Articles/RecordDownVote/" + $(this).data("id"),
+                success: function (msg) {
+                    window.alert("Data Saved: " + msg);
+                }
+            });
+        });
+    </script>
+
+    }

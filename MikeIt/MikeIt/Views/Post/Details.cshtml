@@ -1,0 +1,67 @@
+﻿@model MikeIt.Models.Post
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h4>Details</h4> @Html.DisplayFor(model => model.UpVotes)
+<div type="button" class="UpVoteButton">
+    <a href="RecordUpVote/@Html.DisplayFor(model => model.PostId)?page=details">UpVote this post!
+    <span class="glyphicon glyphicon-arrow-up"></span> </a>
+   
+    </div>
+<div>
+    
+
+    <a href="@Html.DisplayFor(model => model.Url)"><h2>@Html.DisplayFor(model => model.Headline)</h2>
+    <div style="background-image: url('@Html.DisplayFor(model => model.PictureUrl)'); background-size: cover; background-position: center; height: 60em;">
+
+    </div></a>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UpVotes)
+        </dt>
+       
+         <dt>
+            @Html.DisplayFor(model => model.UpVotes)
+        </dt>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Headline)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Headline)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PictureUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PictureUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubmittedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubmittedOn)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PostId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

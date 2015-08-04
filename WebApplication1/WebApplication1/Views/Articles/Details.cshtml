@@ -1,0 +1,21 @@
+﻿@model WebApplication1.Models.Article
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MikeItLayout.cshtml";
+}
+
+<div class="col-lg-2 col-md-3 col-sm-4">
+    <button type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-thumbs-up"></span>@Html.DisplayFor(model => model.UpVotes)</button>
+   
+</div>
+<a href="@Html.DisplayFor(model => model.Url)"><div class="col-lg-10 col-md-9 col-sm-8" style="background-image: url('@Html.DisplayFor(model => model.PictureUrl)'); background-size: cover; background-position: center; height: 70em;">
+</div></a>
+<div>
+<a href=" @Html.DisplayFor(model => model.Url)"><p><strong>@Html.DisplayFor(model => model.Headline)</strong></p></a>
+<p>by @Html.DisplayFor(model => model.User.FirstName)</p>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+</div>
