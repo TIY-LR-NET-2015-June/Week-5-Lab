@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Reddit.Models.Post>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Reddit posts!!</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-default" })
+</p>
+<div class="container">
+    @foreach (var post in Model)
+    {
+        @Html.Partial("PostDetails", post, new ViewDataDictionary { { "Index", "yes" } })
+        <br />
+        <br />
+    }
+</div>
+@section scripts {
+    <script>
+            $("div.voteup").click(function () {
+                var that = $(this);
+                $.ajax({
+                    method: "POST",
+                    url: "@Url.Action("VoteUp", "Reddit")",
+                    data: { id: $(this).data("id") }
+                }).done(function (msg) {
+                    that.next().html(msg);
+                    that.unbind("click");
+                }
+                )
+            })
+
+            $("div.votedown").click(function () {
+                var that = $(this);
+                $.ajax({
+                    method: "POST",
+                    url: "@Url.Action("VoteDown", "Reddit")",
+                    data: { id: $(this).data('id') }
+                }).done(function (msg) {
+                    that.prev().html(msg);
+                    that.unbind("click");
+                })
+            })
+
+    </script>
+}

@@ -1,0 +1,29 @@
+﻿@model Reddit.Models.Post
+
+<div class="form-horizontal">
+    <h4>Post</h4>
+    <hr />
+    @Html.ActionLink(Model.Title, "Details", new { id = Model.ID })
+    @Html.DisplayFor(model => model.Body)
+    <div class="form-group">
+        @Html.DisplayFor(model => model.PublishedOn)
+        <div class="col-md-10">
+            @Html.ActionLink("Vote Up", "VoteUp", new { id = Model.ID }, new { @class = "voteUp" })
+            @Html.ActionLink("Vote Down", "VoteDown", Model, new { @class = "voteDown" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
+        <div class="col-md-10">
+            @Html.ActionLink("Details", "Details", new { id = Model.ID })
+            @Html.ActionLink("Delete", "Delete", new { id = Model.ID })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="@((Model == null)? "Create":"Save")" class="btn btn-default" />
+        </div>
+    </div>
+</div>
