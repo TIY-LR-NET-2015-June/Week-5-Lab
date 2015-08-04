@@ -25,12 +25,9 @@ namespace WebApplication1.Controllers
         }
         
         // GET: Articles/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            
             Article article = db.Articles.Find(id);
             if (article == null)
             {
@@ -67,12 +64,9 @@ namespace WebApplication1.Controllers
         }
 
         // GET: Articles/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+           
             Article article = db.Articles.Find(id);
             if (article == null)
             {
@@ -98,12 +92,9 @@ namespace WebApplication1.Controllers
         }
 
         // GET: Articles/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            
             Article article = db.Articles.Find(id);
             if (article == null)
             {
@@ -145,30 +136,24 @@ namespace WebApplication1.Controllers
         }
        
         
-        public ActionResult RecordUpVote(int? id)
+        public ActionResult RecordUpVote(int id)
         {
             Article article = db.Articles.FirstOrDefault(x => x.Id == id);
-            if (article.UpVotes == null)
-            {
-                article.UpVotes = 0;
-            }
+            
             article.UpVotes++;
             db.Entry(article).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Content(article.Popularity.ToString());
             }
 
-        public ActionResult RecordDownVote(int? id)
+        public ActionResult RecordDownVote(int id)
         {
             Article article = db.Articles.FirstOrDefault(x => x.Id == id);
-            if (article.DownVotes == null)
-            {
-                article.DownVotes = 0;
-            }
+           
             article.DownVotes++;
             db.Entry(article).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Content(article.Popularity.ToString());
         }
     }
     }
