@@ -1,0 +1,88 @@
+﻿@model IEnumerable<ReadIt.Models.Post>
+
+@{
+    ViewBag.Title = "Top Posts";
+}
+
+<h2>Top Posts</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="upvote" align="center" data-id="@item.Id"><span align="center" class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></div>
+                <div class="image" align="center">@Html.ExternalLink(item.LinkTarget, item.Title, item.ImageResource)</div>
+                <div class="downvote" align="center" data-id="@item.Id"><span align="center" class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></div>
+                <div class="votetotal" align="center">Rating: @item.GetVoteTotal()</div>
+            </div>
+            
+            <div align="justify" class="col-xs-9">
+                <h5 class="text-primary">@Html.ExternalLink(item.LinkTarget, item.Title)</h5>
+                <h5 class="text-inffo">contributed by @item.User.UserName</h5>
+
+                @{var TimeSincePosted = DateTime.Now - item.CreatedOn;}
+                <div class="text-muted">Posted @TimeSincePosted.Hours.ToString() hours ago.</div>
+
+            </div>
+
+        </div>
+
+        <hr />
+                    }
+</div>
+
+
+
+@section Scripts{
+    <script>
+        //UPVOTE
+        $("div.upvote").click(function () {
+            var _this = $(this);
+            var _downvotelink = _this.nextAll(".downvote");
+            var _votecountlabel = _this.nextAll(".votetotal")
+
+            $.ajax({
+                method: "POST",
+                url: "@Url.Action("UpVote","Posts")",
+                data: { id: _this.data("id") }
+            })
+.done(function (msg) {
+    _this.unbind("click")
+    _this.addClass("upvoteclick")
+    _downvotelink.unbind("click")
+    _downvotelink.addClass("disabledvoteclick")
+    _votecountlabel.html("Rating: " + msg)
+});
+        })
+
+    </script>
+
+
+    <script>
+        //DOWNVOTE
+        $("div.downvote").click(function () {
+            var _this = $(this);
+            var _upvotelink = _this.prevAll(".upvote");
+            var _votecountlabel = _this.nextAll(".votetotal")
+            $.ajax({
+                method: "POST",
+                url: "@Url.Action("DownVote","Posts")",
+                data: { id: _this.data("id") }
+            })
+  .done(function (msg) {
+      _this.unbind("click")
+      _this.addClass("downvoteclick")
+      _upvotelink.unbind("click")
+      _upvotelink.addClass("disabledvoteclick")
+      _votecountlabel.html("Rating: " + msg)
+  });
+        })
+
+    </script>
+};
+
+
