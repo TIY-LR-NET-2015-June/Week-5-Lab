@@ -21,7 +21,7 @@ namespace WebApplication1.Controllers
             List<Article> displayList = new List<Article>();
             displayList = db.Articles.ToList<Article>();
             
-            return View(displayList.OrderByDescending(x => x.UpVotes));
+            return View(displayList.OrderByDescending(x => x.Popularity));
         }
         
         // GET: Articles/Details/5
@@ -157,6 +157,19 @@ namespace WebApplication1.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
             }
+
+        public ActionResult RecordDownVote(int? id)
+        {
+            Article article = db.Articles.FirstOrDefault(x => x.Id == id);
+            if (article.DownVotes == null)
+            {
+                article.DownVotes = 0;
+            }
+            article.DownVotes++;
+            db.Entry(article).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
+    }
     }
 

@@ -169,30 +169,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201507302032127_initial.cs" />
-    <Compile Include="Migrations\201507302032127_initial.Designer.cs">
-      <DependentUpon>201507302032127_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507311833251_added seed method for articles.cs" />
-    <Compile Include="Migrations\201507311833251_added seed method for articles.Designer.cs">
-      <DependentUpon>201507311833251_added seed method for articles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507311952562_seed function fixed by Daniel.cs" />
-    <Compile Include="Migrations\201507311952562_seed function fixed by Daniel.Designer.cs">
-      <DependentUpon>201507311952562_seed function fixed by Daniel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508012115461_functionality for upvote.cs" />
-    <Compile Include="Migrations\201508012115461_functionality for upvote.Designer.cs">
-      <DependentUpon>201508012115461_functionality for upvote.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508012148110_changed votes to nullable.cs" />
-    <Compile Include="Migrations\201508012148110_changed votes to nullable.Designer.cs">
-      <DependentUpon>201508012148110_changed votes to nullable.cs</DependentUpon>
+    <Compile Include="Migrations\201508032139280_initial.cs" />
+    <Compile Include="Migrations\201508032139280_initial.Designer.cs">
+      <DependentUpon>201508032139280_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -212,6 +195,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\Mike-TIY-Week5.pubxml" />
+    <None Include="Properties\PublishProfiles\mike-tiy-week5lab.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -235,9 +219,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -281,20 +262,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507302032127_initial.resx">
-      <DependentUpon>201507302032127_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507311833251_added seed method for articles.resx">
-      <DependentUpon>201507311833251_added seed method for articles.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507311952562_seed function fixed by Daniel.resx">
-      <DependentUpon>201507311952562_seed function fixed by Daniel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508012115461_functionality for upvote.resx">
-      <DependentUpon>201508012115461_functionality for upvote.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508012148110_changed votes to nullable.resx">
-      <DependentUpon>201508012148110_changed votes to nullable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201508032139280_initial.resx">
+      <DependentUpon>201508032139280_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

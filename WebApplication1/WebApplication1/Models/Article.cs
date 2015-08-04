@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -9,7 +10,7 @@ namespace WebApplication1.Models
     public class Article
     {   
         [Key]
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         public DateTime Submitted { get; set; }
 
@@ -26,6 +27,9 @@ namespace WebApplication1.Models
         public int? UpVotes { get; set; }
 
         public int? DownVotes { get; set; }
+
+        [NotMapped]
+        public int? Popularity { get { return (UpVotes - DownVotes); } }
     }
 
 }
