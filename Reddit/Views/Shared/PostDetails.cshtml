@@ -1,8 +1,12 @@
 ﻿@model Reddit.Models.Post
 
 <div class="col-lg-2 col-md-2">
-    @Html.ActionLink("Vote Up", "VoteUp", new { id = Model.ID }, new { @class = "voteUp" }) <br />
-    @Html.ActionLink("Vote Down", "VoteDown", new { id = Model.ID }, new { @class = "voteDown" })
+   
+    <div>
+        <div class="voteup" data-id="@Model.ID"><span class="glyphicon glyphicon-chevron-up"></span></div>
+        <div>@Model.ConsolidatedVotes</div>
+        <div class="votedown" data-id="@Model.ID"><span class="glyphicon glyphicon-chevron-down"></span></div>
+    </div>
 </div>
 
 <div class="container post col-lg-10 col-md-1">
@@ -10,10 +14,10 @@
     <br />
     @((ViewData["index"].ToString() == "no") ? Html.DisplayFor(model => model.Body) : Html.DisplayFor(model => model.ShortDescription))
     <br />
-    <br />
-    <p>Votes:  @Html.DisplayFor(model => model.PositiveVote)</p>
-    <p>Published on: @Html.DisplayFor(model => model.PublishedOn)
-    By: @Html.DisplayFor(model => model.Publisher)</p>
+    <p>Votes: @Html.DisplayFor(model => model.ConsolidatedVotes)</p>
+    <p>
+        Published on: @Html.DisplayFor(model => model.PublishedOn)
+    </p>
 
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Details", "Details", new { id = Model.ID }) |

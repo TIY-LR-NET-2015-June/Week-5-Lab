@@ -17,3 +17,32 @@
         <br />
     }
 </div>
+@section scripts {
+    <script>
+            $("div.voteup").click(function () {
+                var that = $(this);
+                $.ajax({
+                    method: "POST",
+                    url: "@Url.Action("VoteUp", "Reddit")",
+                    data: { id: $(this).data("id") }
+                }).done(function (msg) {
+                    that.next().html(msg);
+                    that.unbind("click");
+                }
+                )
+            })
+
+            $("div.votedown").click(function () {
+                var that = $(this);
+                $.ajax({
+                    method: "POST",
+                    url: "@Url.Action("VoteDown", "Reddit")",
+                    data: { id: $(this).data('id') }
+                }).done(function (msg) {
+                    that.prev().html(msg);
+                    that.unbind("click");
+                })
+            })
+
+    </script>
+}

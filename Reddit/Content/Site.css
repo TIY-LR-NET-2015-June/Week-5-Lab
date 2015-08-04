@@ -23,9 +23,9 @@ textarea {
     max-width: 280px;
 }
 
-.voteUp {
-    background-image: url('~/App_Data/up.png')
+.voteup {
+    cursor: pointer;
 }
-.voteDown {
-    background-image: url('~/App_Data/down.png')
+.votedown {
+    cursor: pointer;
 }

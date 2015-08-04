@@ -28,7 +28,7 @@ namespace Reddit.Migrations
             //    );
             //
             context.RedditDB.AddOrUpdate(
-            p => p.ID,
+            p => p.Title,
             new Post()
             {
                 Title = "Curabitur et arcu",
@@ -50,6 +50,7 @@ namespace Reddit.Migrations
                 Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget tincidunt augue. Morbi semper purus id sollicitudin consequat. Donec porta, lacus ac sodales facilisis, nunc sem ultrices lectus, id gravida augue massa sed orci. Phasellus vestibulum elementum consectetur. Aliquam ullamcorper laoreet bibendum. Integer suscipit sagittis sagittis. Nulla risus ante, suscipit at mi nec, ullamcorper gravida velit. Vivamus iaculis."
             }
             );
+            context.SaveChanges();
         }
     }
 }

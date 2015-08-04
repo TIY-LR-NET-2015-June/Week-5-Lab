@@ -9,9 +9,7 @@ namespace Reddit.Models
 {
     public class Post
     {
-        RedditUser user = new RedditUser();
         public int ID { get; set; }
-        public string Publisher { get; set; }
         public int ConsolidatedVotes
         {
             get
@@ -43,7 +41,6 @@ namespace Reddit.Models
         public Post()
         {
             PublishedOn = DateTime.Now;
-            Publisher = user.UserName;
         }
     }
 }

@@ -69,16 +69,16 @@ namespace Reddit.Controllers
         public ActionResult VoteUp(int ID)
         {
             Post post = posts.RedditDB.Find(ID);
-            post.PositiveVote += 1;
+            post.PositiveVote++;
             posts.SaveChanges();
-            return RedirectToAction("Index");
+            return Content(post.ConsolidatedVotes.ToString());
         }
         public ActionResult VoteDown(int ID)
         {
             Post post = posts.RedditDB.Find(ID);
-            post.NegativeVote -= 1;
+            post.NegativeVote--;
             posts.SaveChanges();
-            return RedirectToAction("Index");
+            return Content(post.ConsolidatedVotes.ToString());
         }
     }
 }

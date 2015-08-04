@@ -185,6 +185,10 @@
     <Compile Include="Migrations\201508030346472_IndividualVoteIncrimients.Designer.cs">
       <DependentUpon>201508030346472_IndividualVoteIncrimients.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508040428596_RemovedPublisher.cs" />
+    <Compile Include="Migrations\201508040428596_RemovedPublisher.Designer.cs">
+      <DependentUpon>201508040428596_RemovedPublisher.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -272,7 +276,9 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201508021923280_Initial.resx">
       <DependentUpon>201508021923280_Initial.cs</DependentUpon>
@@ -282,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508030346472_IndividualVoteIncrimients.resx">
       <DependentUpon>201508030346472_IndividualVoteIncrimients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508040428596_RemovedPublisher.resx">
+      <DependentUpon>201508040428596_RemovedPublisher.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
