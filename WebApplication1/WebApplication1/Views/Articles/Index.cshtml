@@ -20,10 +20,8 @@
            </div>
 
         <div style="clear:both;">@Html.DisplayFor(modelItem => item.Popularity)</div>
-        <a href="@Url.Action("RecordDownVote", new { id = item.Id })">
-            <div class="downVote glyphicon glyphicon-arrow-down">
+            <div class="downVote glyphicon glyphicon-arrow-down" data-id="@item.Id">
             </div>
-        </a>
     </div>
     <a href="@Html.DisplayFor(modelItem => item.Url)">
         <div class="col-lg-1 col-sm-8" style="background-image: url('@Html.DisplayFor(modelItem => item.PictureUrl)'); background-size: cover; background-position: center; height: 6em;">
@@ -48,6 +46,16 @@
                 url: "/Articles/RecordUpVote/"+$(this).data("id") ,
                 success: function(msg){
                     window.alert( "Data Saved: " + msg );
+                }
+            });
+        });
+
+        $(".downVote").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "/Articles/RecordDownVote/" + $(this).data("id"),
+                success: function (msg) {
+                    window.alert("Data Saved: " + msg);
                 }
             });
         });
