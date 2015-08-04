@@ -1,16 +1,28 @@
-﻿body {
+﻿.upvote, .downvote {
+    cursor: pointer;
+}
+
+.upvoteclick {
+    color: green;
+    cursor: not-allowed;
+}
+
+.downvoteclick {
+    color: red;
+    cursor: not-allowed;
+}
+
+.disabledvoteclick {
+    color: ghostwhite;
+    cursor: not-allowed;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
 
-.arrow-up {
-	width: 0; 
-	height: 0; 
-	border-left: 2px solid transparent;
-	border-right: 2px solid transparent;
-	
-	border-bottom: 2px solid black;
-}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -28,5 +40,5 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 380px;
 }

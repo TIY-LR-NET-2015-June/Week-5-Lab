@@ -22,7 +22,7 @@ namespace ReadIt.Controllers
         // GET: Posts
         public ActionResult Index()
         {
-                
+
             return View(db.Posts.ToList().OrderByDescending(x => x.GetVoteTotal()));
         }
 
@@ -53,21 +53,19 @@ namespace ReadIt.Controllers
         }
 
 
-
-      
         public ActionResult UpVote(int id)
         {
             Post post = db.Posts.Find(id);
             post.UpVote();
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Content(post.GetVoteTotal().ToString());
         }
         public ActionResult DownVote(int id)
         {
             Post post = db.Posts.Find(id);
             post.DownVote();
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Content(post.GetVoteTotal().ToString());
         }
 
         protected override void Dispose(bool disposing)

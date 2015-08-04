@@ -15,7 +15,7 @@ namespace ReadIt
         }
         public static HtmlString ExternalLink(this HtmlHelper helper, string URI, string label, string imageUri)
         {
-            var x = string.Format("<a href='{0}'><img src='{1}' alt='{2}' width='100px'></a>", URI, imageUri,label);
+            var x = string.Format("<a href='{0}'><img src='{1}' alt='{2}' width='100%'></a>", URI, imageUri,label);
             return (HtmlString)helper.Raw(x);
         }
     }

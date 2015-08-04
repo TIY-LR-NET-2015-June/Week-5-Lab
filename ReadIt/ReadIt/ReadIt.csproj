@@ -182,22 +182,6 @@
     <Compile Include="Migrations\201507311751072_init.Designer.cs">
       <DependentUpon>201507311751072_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201507311754154_test2.cs" />
-    <Compile Include="Migrations\201507311754154_test2.Designer.cs">
-      <DependentUpon>201507311754154_test2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507311756333_test21.cs" />
-    <Compile Include="Migrations\201507311756333_test21.Designer.cs">
-      <DependentUpon>201507311756333_test21.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507311757137_test3.cs" />
-    <Compile Include="Migrations\201507311757137_test3.Designer.cs">
-      <DependentUpon>201507311757137_test3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507311758256_test31.cs" />
-    <Compile Include="Migrations\201507311758256_test31.Designer.cs">
-      <DependentUpon>201507311758256_test31.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201507311908239_Test5.cs" />
     <Compile Include="Migrations\201507311908239_Test5.Designer.cs">
       <DependentUpon>201507311908239_Test5.cs</DependentUpon>
@@ -206,38 +190,6 @@
     <Compile Include="Migrations\201507311921232_Test6.Designer.cs">
       <DependentUpon>201507311921232_Test6.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201507311944392_Test7.cs" />
-    <Compile Include="Migrations\201507311944392_Test7.Designer.cs">
-      <DependentUpon>201507311944392_Test7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507312129058_test10.cs" />
-    <Compile Include="Migrations\201507312129058_test10.Designer.cs">
-      <DependentUpon>201507312129058_test10.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507312241505_new.cs" />
-    <Compile Include="Migrations\201507312241505_new.Designer.cs">
-      <DependentUpon>201507312241505_new.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508010823204_10.cs" />
-    <Compile Include="Migrations\201508010823204_10.Designer.cs">
-      <DependentUpon>201508010823204_10.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508011754157_NewDay.cs" />
-    <Compile Include="Migrations\201508011754157_NewDay.Designer.cs">
-      <DependentUpon>201508011754157_NewDay.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508011954019_1253.cs" />
-    <Compile Include="Migrations\201508011954019_1253.Designer.cs">
-      <DependentUpon>201508011954019_1253.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508012043397_AddedHTMLFieldsToPostModel.cs" />
-    <Compile Include="Migrations\201508012043397_AddedHTMLFieldsToPostModel.Designer.cs">
-      <DependentUpon>201508012043397_AddedHTMLFieldsToPostModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508012045209_ReallyAddedHTMLFieldsToModel.cs" />
-    <Compile Include="Migrations\201508012045209_ReallyAddedHTMLFieldsToModel.Designer.cs">
-      <DependentUpon>201508012045209_ReallyAddedHTMLFieldsToModel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201508030341023_HopeThisWorks.cs" />
     <Compile Include="Migrations\201508030341023_HopeThisWorks.Designer.cs">
       <DependentUpon>201508030341023_HopeThisWorks.cs</DependentUpon>
@@ -245,18 +197,6 @@
     <Compile Include="Migrations\201508030349121_HopeThisWorks2.cs" />
     <Compile Include="Migrations\201508030349121_HopeThisWorks2.Designer.cs">
       <DependentUpon>201508030349121_HopeThisWorks2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508030358414_ItWorked.cs" />
-    <Compile Include="Migrations\201508030358414_ItWorked.Designer.cs">
-      <DependentUpon>201508030358414_ItWorked.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508030516497_AzureMigration.cs" />
-    <Compile Include="Migrations\201508030516497_AzureMigration.Designer.cs">
-      <DependentUpon>201508030516497_AzureMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508030559090_FinalMigrationIHope.cs" />
-    <Compile Include="Migrations\201508030559090_FinalMigrationIHope.Designer.cs">
-      <DependentUpon>201508030559090_FinalMigrationIHope.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -340,62 +280,17 @@
     <EmbeddedResource Include="Migrations\201507311751072_init.resx">
       <DependentUpon>201507311751072_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507311754154_test2.resx">
-      <DependentUpon>201507311754154_test2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507311756333_test21.resx">
-      <DependentUpon>201507311756333_test21.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507311757137_test3.resx">
-      <DependentUpon>201507311757137_test3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507311758256_test31.resx">
-      <DependentUpon>201507311758256_test31.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507311908239_Test5.resx">
       <DependentUpon>201507311908239_Test5.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507311921232_Test6.resx">
       <DependentUpon>201507311921232_Test6.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507311944392_Test7.resx">
-      <DependentUpon>201507311944392_Test7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507312129058_test10.resx">
-      <DependentUpon>201507312129058_test10.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507312241505_new.resx">
-      <DependentUpon>201507312241505_new.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508010823204_10.resx">
-      <DependentUpon>201508010823204_10.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508011754157_NewDay.resx">
-      <DependentUpon>201508011754157_NewDay.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508011954019_1253.resx">
-      <DependentUpon>201508011954019_1253.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508012043397_AddedHTMLFieldsToPostModel.resx">
-      <DependentUpon>201508012043397_AddedHTMLFieldsToPostModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508012045209_ReallyAddedHTMLFieldsToModel.resx">
-      <DependentUpon>201508012045209_ReallyAddedHTMLFieldsToModel.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508030341023_HopeThisWorks.resx">
       <DependentUpon>201508030341023_HopeThisWorks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508030349121_HopeThisWorks2.resx">
       <DependentUpon>201508030349121_HopeThisWorks2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508030358414_ItWorked.resx">
-      <DependentUpon>201508030358414_ItWorked.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508030516497_AzureMigration.resx">
-      <DependentUpon>201508030516497_AzureMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508030559090_FinalMigrationIHope.resx">
-      <DependentUpon>201508030559090_FinalMigrationIHope.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
