@@ -12,7 +12,7 @@ namespace lab5_Jason.Controllers
 {
     public class RedditPostsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        public ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: RedditPosts
         public ActionResult Index()
