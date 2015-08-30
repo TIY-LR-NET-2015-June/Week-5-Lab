@@ -46,11 +46,12 @@ namespace lab5_Jason.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,UpVote,DownVote,PostTime")] RedditPost redditPost)
+        public ActionResult Create([Bind(Include = "Id,Name,UpVote,DownVote,URL")] RedditPost redditPost)
         {
             if (ModelState.IsValid)
             {
                 db.RedditPosts.Add(redditPost);
+                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -78,7 +79,7 @@ namespace lab5_Jason.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,UpVote,DownVote,PostTime")] RedditPost redditPost)
+        public ActionResult Edit([Bind(Include = "Id,Name,UpVote,DownVote,URL")] RedditPost redditPost)
         {
             if (ModelState.IsValid)
             {
