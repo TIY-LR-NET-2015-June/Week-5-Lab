@@ -13,6 +13,34 @@ namespace lab5_Jason.Controllers
     public class RedditPostsController : Controller
     {
         public ApplicationDbContext db = new ApplicationDbContext();
+        public List<RedditPost> GetPosts()
+        {
+            List<RedditPost> posts = (List<RedditPost>)Session["BlogPosts"];
+            if (posts == null)
+            {
+                posts = new List<RedditPost>();
+                db.RedditPosts.Add(new RedditPost() { Name = "Jason Williams", Id = 1, URL = "https://www.google.com", PostTime = DateTime.Now });
+                db.RedditPosts.Add(new RedditPost() { Name = "Jason Williams", Id = 2, URL = "https://www.facebook.com", PostTime = DateTime.Now.AddMonths(-1) });
+                db.RedditPosts.Add(new RedditPost() { Name = "Dainel Pollock", Id = 3, URL = "https://www.twitter.com", PostTime = DateTime.Now.AddDays(-5) });
+                db.SaveChanges();
+            }
+
+            return posts;
+        }
+        public void AddPost(RedditPost p)
+        {
+            var posts = GetPosts();
+
+            p.Id = posts.Max(x => x.Id) + 1;
+
+            posts.Add(p);
+
+            SavePosts(posts);
+        }
+        public void SavePosts(List<RedditPost> Posts)
+        {
+            Session["BlogPosts"] = Posts;
+        }
 
         // GET: RedditPosts
         public ActionResult Index()
@@ -46,32 +74,33 @@ namespace lab5_Jason.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,UpVote,DownVote,URL")] RedditPost redditPost)
+        public ActionResult Create(RedditPost redditPost)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
+                return View(redditPost);
+            }
+            try
+            {
+                redditPost.PostTime = DateTime.Now;
                 db.RedditPosts.Add(redditPost);
-                
                 db.SaveChanges();
+                
                 return RedirectToAction("Index");
             }
-
-            return View(redditPost);
+            catch
+            {
+                return View();
+            }
         }
 
         // GET: RedditPosts/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
+
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            RedditPost redditPost = db.RedditPosts.Find(id);
-            if (redditPost == null)
-            {
-                return HttpNotFound();
-            }
-            return View(redditPost);
+            var post = GetPosts().FirstOrDefault(x => x.Id == id);
+
+            return View(post);
         }
 
         // POST: RedditPosts/Edit/5
@@ -79,15 +108,31 @@ namespace lab5_Jason.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,UpVote,DownVote,URL")] RedditPost redditPost)
+        public ActionResult Edit(RedditPost editRedditPost)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(redditPost).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {
+                    //do the update with edittedpost
+                    var posts = GetPosts();
+                    var post = posts.FirstOrDefault(x => x.Id == editRedditPost.Id);
+                    db.RedditPosts.Remove(post);
+                    db.RedditPosts.Add(editRedditPost);
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View();
+                }
             }
-            return View(redditPost);
+            catch
+            {
+                return View();
+            }
         }
 
         // GET: RedditPosts/Delete/5
@@ -97,12 +142,9 @@ namespace lab5_Jason.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RedditPost redditPost = db.RedditPosts.Find(id);
-            if (redditPost == null)
-            {
-                return HttpNotFound();
-            }
-            return View(redditPost);
+
+            var post = GetPosts().FirstOrDefault(x => x.Id == id);
+            return View(post);
         }
 
         // POST: RedditPosts/Delete/5
@@ -110,19 +152,15 @@ namespace lab5_Jason.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            RedditPost redditPost = db.RedditPosts.Find(id);
-            db.RedditPosts.Remove(redditPost);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
+            var posts = GetPosts();
+            var post = posts.FirstOrDefault(x => x.Id == id);
+            if (post != null)
             {
-                db.Dispose();
+                posts.Remove(post);
+                SavePosts(posts);
             }
-            base.Dispose(disposing);
+
+            return RedirectToAction("Index");
         }
     }
 }

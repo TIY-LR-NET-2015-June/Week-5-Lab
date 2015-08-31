@@ -239,3 +239,4 @@ C:\Users\Jason W\Documents\Visual Studio 2015\Projects\Week5lab5-Jason\lab5-Jaso
 C:\Users\Jason W\Documents\Visual Studio 2015\Projects\Week5lab5-Jason\lab5-Jason\obj\Debug\lab5-Jason.dll
 C:\Users\Jason W\Documents\Visual Studio 2015\Projects\Week5lab5-Jason\lab5-Jason\obj\Debug\lab5-Jason.pdb
 C:\Users\Jason W\Documents\Visual Studio 2015\Projects\Week5lab5-Jason\lab5-Jason\obj\Debug\lab5_Jason.Migrations.url.resources
+C:\Users\Jason W\Documents\Visual Studio 2015\Projects\Week5lab5-Jason\lab5-Jason\obj\Debug\lab5_Jason.Migrations.stuff.resources
