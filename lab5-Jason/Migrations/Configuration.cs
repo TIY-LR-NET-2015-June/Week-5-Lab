@@ -29,9 +29,9 @@ namespace lab5_Jason.Migrations
             context.RedditPosts.AddOrUpdate
                 (
                 p => p.Name,
-                new Models.RedditPost { Name = "Andrew Peters", PostTime = DateTime.Now },
-                new Models.RedditPost { Name = "Brice Lambson", PostTime = DateTime.Now },
-                new Models.RedditPost { Name = "Rowan Miller", PostTime = DateTime.Now, Title="" }
+                new Models.RedditPost { Name = "Andrew Peters", PostTime = DateTime.Now, Title ="I dont really know what do say" },
+                new Models.RedditPost { Name = "Brice Lambson", PostTime = DateTime.Now, Title ="How do you know if your going bald" },
+                new Models.RedditPost { Name = "Rowan Miller", PostTime = DateTime.Now, Title ="THE BIG APPLE"}
               );
 
             context.SaveChanges();

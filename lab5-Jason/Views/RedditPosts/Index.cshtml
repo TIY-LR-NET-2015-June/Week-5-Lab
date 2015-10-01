@@ -10,47 +10,52 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@foreach (var post in Model)
-{
+<div class="container-fluid">
+    @foreach (var post in Model.OrderByDescending(x => x.TotalVotes))
+    {
+        <div class="row-fluid">
+            <div align="center" class="col-xs-1 col-lg-offset-2">
+                <div class="increment up" data-postid="@post.Id"><span class="glyphicon glyphicon-arrow-up"></span></div>
+                <div class="count">@post.TotalVotes</div>
+                <div class="increment down" data-postid="@post.Id"><span class="glyphicon glyphicon-arrow-down"></span></div>
+            </div>
+            <div class="col-xs-11 col-lg-9">
+                <div class="text-primary"><h3>@post.Title</h3></div>
+                <div style="color:grey"><b>submitted @post.PostTime by</b><b style="color:blue"> @post.Name</b></div>
+            </div>
+        </div>
+    }
+</div>
 
-    <div class="vote roundrect">
-        <div class="increment up"  data-postid="@post.Id"><span class="glyphicon glyphicon-arrow-up"></span></div>
-        <div class="increment down"  data-postid="@post.Id"><span class="glyphicon glyphicon-arrow-down"></span></div>
 
-        <div class="count">@post.TotalVotes</div>
-    </div>
-    <div>
-        @post.Title @post.Name @post.PostTime
-    </div>
-}
+    @section scripts{
+        <script>
+            $(function () {
 
-@section scripts{
-<script>
-    $(function () {
+                $(".up").click(function () {
+                    var that = this;
+                    console.log($(that).data("postid"));
+                    $.post("/RedditPosts/UpVote", { id: $(that).data("postid") })
+                          .done(function (data) {
+                              console.log(data);
+                              $("~ .count", that).text(data);
+                          });
 
-        $(".up").click(function () {
-            var that = this;
-            console.log($(that).data("postid"));
-            $.post("/RedditPosts/UpVote", { id: $(that).data("postid") })
-                  .done(function (data) {
-                      console.log(data);
-                      $("~ .count", that).text(data);
-                  });
+                });
 
-        });
+                $(".down").click(function () {
+                    var that = this;
+                    console.log($(that).data("postid"));
+                    $.post("/RedditPosts/DownVote", { id: $(that).data("postid") })
+                          .done(function (data) {
+                              console.log(data);
+                              $("~ .count", that).text(data);
+                          });
 
-        $(".down").click(function () {
-            var that = this;
-            $.post("/RedditPosts/DownVote", { id: $(that).data("postid") })
-                  .done(function (data) {
-                      console.log(data);
-                      $("~ .count", that).text(data);
-                  });
+                });
 
-        });
-    
 
-    });
-</script>
+            });
+        </script>
 
-}
+    }

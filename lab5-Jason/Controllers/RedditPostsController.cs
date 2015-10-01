@@ -61,7 +61,7 @@ namespace lab5_Jason.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Title,Text,UpVote,DownVote,URL,PostTime")] RedditPost redditPost)
+        public ActionResult Create(RedditPost redditPost)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace lab5_Jason.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Title,Text,UpVote,DownVote,URL,PostTime")] RedditPost redditPost)
+        public ActionResult Edit(RedditPost redditPost)
         {
             if (ModelState.IsValid)
             {
