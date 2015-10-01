@@ -16,7 +16,7 @@ namespace lab5_Jason
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "RedditPost", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "RedditPosts", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

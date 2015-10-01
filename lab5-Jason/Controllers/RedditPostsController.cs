@@ -13,36 +13,23 @@ namespace lab5_Jason.Controllers
     public class RedditPostsController : Controller
     {
         public ApplicationDbContext db = new ApplicationDbContext();
-        public List<RedditPost> GetPosts()
+       
+        public ActionResult UpVote(int id)
         {
-            List<RedditPost> posts = (List<RedditPost>)Session["BlogPosts"];
-            if (posts == null)
-            {
-                posts = new List<RedditPost>();
-                db.RedditPosts.Add(new RedditPost() { Name = "Jason Williams", Id = 1, URL = "https://www.google.com", PostTime = DateTime.Now });
-                db.RedditPosts.Add(new RedditPost() { Name = "Jason Williams", Id = 2, URL = "https://www.facebook.com", PostTime = DateTime.Now.AddMonths(-1) });
-                db.RedditPosts.Add(new RedditPost() { Name = "Dainel Pollock", Id = 3, URL = "https://www.twitter.com", PostTime = DateTime.Now.AddDays(-5) });
-                db.SaveChanges();
-            }
-
-            return posts;
-        }
-        public void AddPost(RedditPost p)
-        {
-            var posts = GetPosts();
-
-            p.Id = posts.Max(x => x.Id) + 1;
-
-            posts.Add(p);
-
-            SavePosts(posts);
-        }
-        public void SavePosts(List<RedditPost> Posts)
-        {
-            Session["BlogPosts"] = Posts;
+            var post  = db.RedditPosts.Find(id);
+            post.UpVote++;
+            db.SaveChanges();
+            return Content(post.TotalVotes.ToString());
         }
 
-        // GET: RedditPosts
+        public ActionResult DownVote(int id)
+        {
+            var post = db.RedditPosts.Find(id);
+            post.DownVote++;
+            db.SaveChanges();
+            return Content(post.TotalVotes.ToString());
+        }
+
         public ActionResult Index()
         {
             return View(db.RedditPosts.ToList());
@@ -74,33 +61,31 @@ namespace lab5_Jason.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(RedditPost redditPost)
+        public ActionResult Create([Bind(Include = "Id,Name,Title,Text,UpVote,DownVote,URL,PostTime")] RedditPost redditPost)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(redditPost);
-            }
-            try
-            {
-                redditPost.PostTime = DateTime.Now;
                 db.RedditPosts.Add(redditPost);
                 db.SaveChanges();
-                
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(redditPost);
         }
 
         // GET: RedditPosts/Edit/5
-        public ActionResult Edit(int id)
-
+        public ActionResult Edit(int? id)
         {
-            var post = GetPosts().FirstOrDefault(x => x.Id == id);
-
-            return View(post);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            RedditPost redditPost = db.RedditPosts.Find(id);
+            if (redditPost == null)
+            {
+                return HttpNotFound();
+            }
+            return View(redditPost);
         }
 
         // POST: RedditPosts/Edit/5
@@ -108,31 +93,15 @@ namespace lab5_Jason.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(RedditPost editRedditPost)
+        public ActionResult Edit([Bind(Include = "Id,Name,Title,Text,UpVote,DownVote,URL,PostTime")] RedditPost redditPost)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-                if (ModelState.IsValid)
-                {
-                    //do the update with edittedpost
-                    var posts = GetPosts();
-                    var post = posts.FirstOrDefault(x => x.Id == editRedditPost.Id);
-                    db.RedditPosts.Remove(post);
-                    db.RedditPosts.Add(editRedditPost);
-                    db.SaveChanges();
-
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    return View();
-                }
+                db.Entry(redditPost).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(redditPost);
         }
 
         // GET: RedditPosts/Delete/5
@@ -142,9 +111,12 @@ namespace lab5_Jason.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            var post = GetPosts().FirstOrDefault(x => x.Id == id);
-            return View(post);
+            RedditPost redditPost = db.RedditPosts.Find(id);
+            if (redditPost == null)
+            {
+                return HttpNotFound();
+            }
+            return View(redditPost);
         }
 
         // POST: RedditPosts/Delete/5
@@ -152,15 +124,19 @@ namespace lab5_Jason.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var posts = GetPosts();
-            var post = posts.FirstOrDefault(x => x.Id == id);
-            if (post != null)
-            {
-                posts.Remove(post);
-                SavePosts(posts);
-            }
-
+            RedditPost redditPost = db.RedditPosts.Find(id);
+            db.RedditPosts.Remove(redditPost);
+            db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

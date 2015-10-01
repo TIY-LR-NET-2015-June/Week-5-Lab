@@ -26,6 +26,15 @@ namespace lab5_Jason.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            context.RedditPosts.AddOrUpdate
+                (
+                p => p.Name,
+                new Models.RedditPost { Name = "Andrew Peters", PostTime = DateTime.Now },
+                new Models.RedditPost { Name = "Brice Lambson", PostTime = DateTime.Now },
+                new Models.RedditPost { Name = "Rowan Miller", PostTime = DateTime.Now, Title="" }
+              );
+
+            context.SaveChanges();
         }
     }
 }
