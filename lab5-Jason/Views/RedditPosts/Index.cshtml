@@ -29,33 +29,17 @@
 
 
     @section scripts{
-        <script>
-            $(function () {
-
-                $(".up").click(function () {
-                    var that = this;
-                    console.log($(that).data("postid"));
-                    $.post("/RedditPosts/UpVote", { id: $(that).data("postid") })
-                          .done(function (data) {
-                              console.log(data);
-                              $("~ .count", that).text(data);
-                          });
-
-                });
-
-                $(".down").click(function () {
-                    var that = this;
-                    console.log($(that).data("postid"));
-                    $.post("/RedditPosts/DownVote", { id: $(that).data("postid") })
-                          .done(function (data) {
-                              console.log(data);
-                              $("~ .count", that).text(data);
-                          });
-
-                });
-
-
+       <script>
+        $(function () {
+            $(".increment").click(function () {
+                var that = $(this);
+                var upordown = that.hasClass("up") ? "UpVote" : "DownVote";
+                $.post("/RedditPosts/" + upordown, { id: $(that).data("postid") })
+                      .done(function (data) {
+                          that.siblings('.count').text(data);
+                      });
             });
-        </script>
+        });
+</script>
 
     }
