@@ -1,0 +1,45 @@
+﻿@model IEnumerable<lab5_Jason.Models.RedditPost>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="container-fluid">
+    @foreach (var post in Model.OrderByDescending(x => x.TotalVotes))
+    {
+        <div class="row-fluid">
+            <div align="center" class="col-xs-1 col-lg-offset-2">
+                <div class="increment up" data-postid="@post.Id"><span class="glyphicon glyphicon-arrow-up"></span></div>
+                <div class="count">@post.TotalVotes</div>
+                <div class="increment down" data-postid="@post.Id"><span class="glyphicon glyphicon-arrow-down"></span></div>
+            </div>
+            <div class="col-xs-11 col-lg-9">
+                <div class="text-primary"><h3>@post.Title</h3></div>
+                <div style="color:grey"><b>submitted @post.PostTime by</b><b style="color:blue"> @post.Name</b></div>
+            </div>
+        </div>
+    }
+</div>
+
+
+    @section scripts{
+       <script>
+        $(function () {
+            $(".increment").click(function () {
+                var that = $(this);
+                var upordown = that.hasClass("up") ? "UpVote" : "DownVote";
+                $.post("/RedditPosts/" + upordown, { id: $(that).data("postid") })
+                      .done(function (data) {
+                          that.siblings('.count').text(data);
+                      });
+            });
+        });
+</script>
+
+    }
